@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DonKats SEO Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+    <img src="{{ url_for('static', filename='logo.png') }}" width="120">
+    <h1 class="mt-3">DonKats SEO Bot</h1>
+    <p class="text-muted">Effortless SEO for Everyday Creators with One Bot for All Your SEO Needs.</p>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label>Choose input type:</label><br>
+            <input type="radio" name="input_type" value="url" checked> URL
+            <input type="radio" name="input_type" value="text"> Text
+        </div>
+
+        <div class="mb-3">
+            <textarea name="user_input" rows="6" class="form-control" placeholder="Enter a URL or paste your content here..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Analyze</button>
+
+		<p>              </p>
+		
+		<div class="section">
+			<h2>Valid URL Formats</h2>
+			<p class="valid"><strong>Acceptable Input</strong></p>
+			<ul class="valid">
+				<li>https://www.example.com</li>
+				<li>http://example.com/about</li>
+				<li>https://example.com/</li>
+				<li>https://subdomain.domain.com/page</li>
+			</ul>
+
+			<p class="invalid"><strong>Unacceptable Input</strong></p>
+			<ul class="invalid">
+				<li>www.example.com</li>
+				<li>example.com</li>
+				<li>ftp://example.com</li>
+				<li>file:///C:/Users/Desktop/file.html</li>
+			</ul>
+		</div>
+
+		<div class="section">
+			<h2>Valid Text Input Formats</h2>
+			<p>Any plain text as Sentences or paragraphs</p>
+		</div>
+
+    </form>
+</div>
+</body>
+</html>
