@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DonKats Payment</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=AcPTHBwvx7shxvJJazPzLA1UvSUoDWkNrvItcA4bQD65gYYAzBo1CIbpWVxdRfx4fStHdDDXprMu3hbn&currency=USD&disable-funding=paylater"></script>
+
+</head>
+<body style="text-align: center; font-family: Arial; padding: 2rem;">
+  <h1>DonKats SEO Analysis Tool</h1>
+  <p style="font-size: 1.2rem;">Pay $39.95 to get instant access to the analysis form.</p>
+
+  <div id="paypal-button-container" style="margin-top: 2rem;"></div>
+
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: '39.95' }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          // Redirect to form after payment
+          window.location.href = "/form";
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+</body>
+</html>

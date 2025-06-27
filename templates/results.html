@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SEO Analysis Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+<div class="container mt-4">
+    <img src="{{ url_for('static', filename='logo.png') }}" width="120">
+
+	<p>              </p>
+
+    <h2>SEO Analysis Results</h2>
+
+    {% if results.error %}
+        <div class="alert alert-danger" role="alert">
+            {{ results.error }}
+        </div>
+    {% endif %}
+
+    <p><strong>Title:</strong> {{ results.title }}</p>
+    <p><strong>Meta Description:</strong> {{ results.meta_desc }}</p>
+    <p><strong>Word Count:</strong> {{ results.word_count }}</p>
+    <p><strong>Readability Score:</strong> {{ results.readability }}</p>
+
+    <h5>Preview:</h5>
+    <p>{{ results.text[:500] }}...</p>
+
+	<hr>
+
+	<!-- Begin Top Keywords by Frequency Result -->
+	<h4>Top Keywords by Frequency</h4>
+	<ul>
+		{% for kw, freq in results.top_keywords_freq %}
+			<li>{{ kw }} — {{ freq }}</li>
+		{% endfor %}
+	</ul>
+	<!-- End Top Keywords by TF-IDF Result -->
+
+	<!-- Begin Top Keywords by TF-IDF Result -->
+	<h4>Top Keywords by TF-IDF</h4>
+	<ul>
+		{% for kw, freq in results.top_keywords_tfidf %}
+		<!-- <li>{{ kw }} — {{ freq }}</li> -->
+			<li>{{ kw }} — {{ '%.4f' | format(freq) }}</li>
+		{% endfor %}
+	</ul>
+	<!-- End Top Keywords by TF-IDF Result -->
+
+	<!-- Begin Extract Phases Result -->
+	<h4>Extracted Phases</h4>
+	<ul>
+		{% for phrase in results.noun_phrases %}
+			<li>{{ phrase }}</li>
+		{% endfor %}
+	</ul>
+	<!-- End Extract Phases Result -->
+
+	<!-- Begin SEO Recommendations -->	
+	<h4>SEO Recommendations</h4>
+	<ul>
+		{% for rec in results.recommendations %}
+			<li>{{ rec }}</li>
+		{% endfor %}
+	</ul>
+	<!-- SEO Recommendations -->
+
+	<h2> Section-Level SEO Analysis</h2>
+	{% for sec in results.sections %}
+		<div class="card mb-4 p-3">
+			<h4>{{ sec.label }}</h4>
+			<ul>
+				<li><strong>Word Count:</strong> {{ sec.word_count }}</li>
+				<li><strong>Readability:</strong> {{ sec.readability }}</li>
+				<li><strong>Top Keywords:</strong>
+					<ul>
+						{% for word, freq in sec.top_keywords %}
+							<li>{{ word }} — {{ freq }}</li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li><strong>Noun Phrases:</strong> {{ sec.noun_phrases|join(", ") }}</li>
+			</ul>
+		</div>
+		
+		{% endfor %}
+
+    {% if not results.error %}
+        <a href="/download" class="btn btn-primary mt-3">Download Full PDF Report</a>
+    {% endif %}
+
+    {% if results.error %}
+		<a href="/" class="btn btn-secondary mt-3">Run Another Analysis</a>
+	{% endif %}
+</div>
+</body>
+</html>
