@@ -1,11 +1,13 @@
-flask
-fpdf
-requests==2.31.0
-spacy==3.7.2
 requests==2.31.0
 beautifulsoup4==4.12.2
 textstat==0.7.3
 readability-lxml==0.8.1
 scikit-learn==1.4.2
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+spacy==3.7.2
 playwright==1.44.0
+fpdf==1.7.2
+flask==2.3.3
+gunicorn==21.2.0
+
+# spaCy English model (required for NLP features like noun phrase extraction)
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
