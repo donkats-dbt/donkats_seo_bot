@@ -20,7 +20,7 @@ def index():
 
 @app.route("/download")
 def download():
-    return send_file("output/report.pdf", as_attachment=True)
+    return send_file("output/donkats_seo_report.pdf", as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
