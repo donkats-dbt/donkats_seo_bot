@@ -2,6 +2,7 @@ requests==2.31.0
 beautifulsoup4==4.12.2
 textstat==0.7.3
 readability-lxml==0.8.1
+lxml[html_clean]==4.9.4
 scikit-learn==1.4.2
 spacy==3.7.2
 playwright==1.44.0
