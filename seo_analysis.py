@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 import re
 import spacy
 nlp = spacy.load("en_core_web_sm")
-
+ 
 def get_top_freq_words(text, top_n=10):
     words = re.findall(r'\b[a-z]{3,}\b', text.lower())
     return Counter(words).most_common(top_n)
@@ -67,7 +67,7 @@ def extract_tab_sections(rendered_html):
 
         if text and len(text.split()) > 20:
 ############################################################################           
-            print(f" Section found: {label} ({len(text.split())} words)")
+#            print(f" Section found: {label} ({len(text.split())} words)")
 ############################################################################            
             sections.append({
                 "label": label,
