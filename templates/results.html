@@ -86,7 +86,17 @@
 		{% endfor %}
 
     {% if not results.error %}
-        <a href="/download" class="btn btn-primary mt-3">Download Full PDF Report</a>
+	<!--        <a href="/download" class="btn btn-primary mt-3">Download Full PDF Report</a> -->
+		<a href="/download" class="btn btn-primary mt-3" id="downloadBtn">Download Full PDF Report</a>
+
+		<script>
+			document.getElementById("downloadBtn").addEventListener("click", function () {
+				setTimeout(function () {
+					window.location.href = "/session_completed";
+				}, 3000);  // wait 3 seconds before redirecting
+			});
+		</script>
+
     {% endif %}
 
     {% if results.error %}
