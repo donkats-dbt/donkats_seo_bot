@@ -158,14 +158,14 @@ def create_pdf(results):
         pdf.set_font("Arial", "B", 14)
 #        pdf.cell(0, 10, "Section-Level SEO Analysis", ln=True)
 ####################  Added 6/24/2025 ##########        
-        print(f"Generating PDF for {len(sections)} sections")
+#        print(f"Generating PDF for {len(sections)} sections")
 ####################  Added 6/24/2025 ##########
         for section in sections:
             pdf.add_page()
             pdf.set_font("Arial", "B", 14)
             pdf.cell(0, 10, "Section-Level SEO Analysis", ln=True)
 ####################  Added 6/24/2025 ##########        
-            print(f"   Section: {section['label']}")
+#            print(f"   Section: {section['label']}")
 ####################  Added 6/24/2025 ##########            
             pdf.ln(5)
             pdf.set_font("Arial", "B", 12)
