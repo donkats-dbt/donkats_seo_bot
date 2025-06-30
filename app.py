@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, session
 from seo_analysis import analyze_url_or_text
 from generate_pdf import create_pdf
 import os
 
 app = Flask(__name__)
+
+app.secret_key = os.environ.get("SECRET_KEY", "fallback-if-missing")
 
 @app.route("/form", methods=["GET", "POST"])
 def form():
