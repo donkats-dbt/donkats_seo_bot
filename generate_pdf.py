@@ -44,7 +44,7 @@ def create_pdf(results):
     pdf.set_font("Arial", "B", 24)
     pdf.image("static/logo.png", 10, 8, 33)
     
-    pdf.cell(200, 10, "DonKats SEO Bot Report", ln=True, align="C")
+    pdf.cell(200, 10, "DonKats SEO Analysis Report", ln=True, align="C")
     pdf.set_font("Arial", "", 9)
     pdf.cell(0, 5, "Copyright © 2025 by DonKats Services, Inc. All Rights Reserved.", ln=True, align="C")
 
